@@ -9,7 +9,7 @@ const cors=require("cors")
 const port=process.env.PORT;
 const userRouter=require("./routes/userRouter")
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:"https://virtual-assistant-1-cc9u.onrender.com",
     credentials:true
 }))
 app.use(express.json())
