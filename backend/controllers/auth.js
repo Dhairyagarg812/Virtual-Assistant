@@ -73,6 +73,7 @@ const signIn = async (req, res) => {
 
 const logout=async(req,res)=>{
     try{
+      
       res.clearCookie("token", {
         httpOnly: true,
         sameSite: "none",

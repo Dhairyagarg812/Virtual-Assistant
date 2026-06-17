@@ -76,13 +76,30 @@ const Home = () => {
     };
 
     recognition.onend = () => {
-      setAiText("")
-      recognition.start();
+      setAiText("");
+    
+      setTimeout(() => {
+        try {
+          recognition.start();
+        } catch (err) {
+          console.log("Restart error:", err.message);
+        }
+      }, 1000);
     };
-    recognition.onerror=(e)=>{
-      setUserText("Error occured") 
-      console.warn("Error aa gya h maf kre shayad api limit hit krdi aapne -> "+e)
-    }
+    
+    recognition.onerror = (e) => {
+      console.warn("Speech recognition error:", e.error);
+    
+      if (e.error === "no-speech") {
+        setUserText("No speech detected");
+      } else if (e.error === "not-allowed") {
+        setUserText("Microphone permission denied");
+      } else if (e.error === "audio-capture") {
+        setUserText("Microphone not found");
+      } else {
+        setUserText("Speech recognition error");
+      }
+    };
 
     
 
