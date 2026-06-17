@@ -75,6 +75,18 @@ const Home = () => {
       }
     };
 
+    recognition.onstart = () => {
+      console.log("Listening started");
+    };
+    
+    recognition.onend = () => {
+      console.log("Listening ended");
+    };
+    
+    recognition.onerror = (e) => {
+      console.log("Speech Error:", e.error);
+    };
+
     recognition.onend = () => {
       setAiText("");
     
