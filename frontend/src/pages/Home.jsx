@@ -14,7 +14,7 @@ const Home = () => {
 
   const handleLogout = async () => {
     await axios.post(
-      "http://localhost:8000/api/auth/logout",
+      "https://virtual-assistant-f3fg.onrender.com/api/auth/logout",
       {},
       { withCredentials: true }
     );

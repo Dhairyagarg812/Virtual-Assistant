@@ -9,7 +9,7 @@ const UserContext = ({ children }) => {
     const [userData, setUserData] = useState(null);
     const handleUserData = async () => {
         try {
-            const result =await axios.get("http://localhost:8000/api/user/current",
+            const result =await axios.get("https://virtual-assistant-f3fg.onrender.com/api/user/current",
                 { withCredentials: true });
             console.log(result.data);
             setUserData(result.data);
@@ -24,7 +24,7 @@ const UserContext = ({ children }) => {
       
         try {
           const result = await axios.post(
-            "http://localhost:8000/api/user/asktoassistant",
+            "https://virtual-assistant-f3fg.onrender.com/api/user/asktoassistant",
             { command: prompt },
             { withCredentials: true }
           );

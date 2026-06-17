@@ -16,7 +16,7 @@ export default function SignUp() {
     const handleClick = async (e) => {
         e.preventDefault();
         try {
-            const result = await axios.post("http://localhost:8000/api/auth/signup", { name, email, password }, { withCredentials: true })
+            const result = await axios.post("https://virtual-assistant-f3fg.onrender.com/api/auth/signup", { name, email, password }, { withCredentials: true })
             setUserData(result.data.User);
             toast.success("Signup Successful!");
             navigate("/customize")
