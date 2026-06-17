@@ -17,7 +17,12 @@ const signUp=async(req,res)=>{
         password=await bcrypt.hash(password,10);
         const User=await user.create({name,email,password})
         const token =await genToken(User._id);
-        res.cookie("token",token)
+        res.cookie("token", token, {
+          httpOnly: true,
+          sameSite: "none",
+          secure: true,
+          maxAge: 7 * 24 * 60 * 60 * 1000,
+        });
 
         return res.status(201).json(User)
     }
@@ -52,8 +57,9 @@ const signIn = async (req, res) => {
   
       res.cookie("token", token, {
         httpOnly: true,
-        sameSite: "lax",
-        secure: false,
+        sameSite: "none",
+        secure: true,
+        maxAge: 7 * 24 * 60 * 60 * 1000,
       });
   
       const userWithoutPassword = await user.findById(User._id).select("-password");
@@ -67,7 +73,11 @@ const signIn = async (req, res) => {
 
 const logout=async(req,res)=>{
     try{
-        res.clearCookie("token");
+      res.clearCookie("token", {
+        httpOnly: true,
+        sameSite: "none",
+        secure: true,
+      });
         return res.status(201).json({message:`Cookie Cleared`})
     }
     catch(err){
