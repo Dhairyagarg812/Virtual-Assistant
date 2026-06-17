@@ -5,7 +5,7 @@ import axios from "axios";
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 import toast from "react-hot-toast";
-import { userDataContext } from "../context/userContext";
+import { userDataContext } from "../context/UserContext";
 export default function SignUp() {
     const {userData, setUserData}=useContext(userDataContext);
     const [showpassword, setshowpassword] = useState(false)

@@ -5,7 +5,7 @@ import axios from "axios";
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 import { useContext } from "react";
-import { userDataContext } from "../context/userContext";
+import { userDataContext } from "../context/UserContext";
 import toast from "react-hot-toast";
 import { Navigate } from "react-router-dom";
 export default function SignIn() {
